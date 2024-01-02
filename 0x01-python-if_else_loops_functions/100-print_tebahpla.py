@@ -6,4 +6,3 @@ for asc in range(ord('z'), ord('a') - 1, -1):
     else:
         transforme = 1
     print("{:c}".format(asc - transforme * dif), end='')
-        
