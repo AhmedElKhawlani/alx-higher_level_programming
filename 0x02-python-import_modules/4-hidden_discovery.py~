@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+if __name__ == "__main__":
+    f = open("hidden_4.pyc", "rb")
+    s = f.read()
+    f.close()
+    print(s)
