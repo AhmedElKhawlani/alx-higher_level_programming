@@ -8,6 +8,8 @@ if __name__ == "__main__":
         sys.exit(1)
     else:
         operator = sys.argv[2]
+        a = int(sys.argv[1])
+        b = int(sys.argv[3])
         if operator == '+':
             print("{} + {} = {}".format(a, b, add(a, b)))
         elif operator == '-':
