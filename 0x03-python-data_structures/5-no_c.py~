@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+def no_c(my_string):
+    new = ""
+    for x in my_string:
+        if not x in ('c', 'C'):
+            new = new + x
+    return new
