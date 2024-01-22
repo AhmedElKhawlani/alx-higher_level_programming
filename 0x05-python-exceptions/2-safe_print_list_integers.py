@@ -11,6 +11,5 @@ def safe_print_list_integers(my_list=[], x=0):
         except ValueError:
             pass
         i = i + 1
-    if cpt > 0:
-        print()
+    print()
     return cpt
