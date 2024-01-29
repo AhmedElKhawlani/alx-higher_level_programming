@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# 3-rectangle.py by EL KHAWLANI Ahmed
+# 4-rectangle.py by EL KHAWLANI Ahmed
 """ Defines a class that represents rectangles"""
 
 
@@ -53,3 +53,6 @@ class Rectangle:
         for i in range(self.height):
             ch = ch + self.width * '#' + '\n'
         return ch[:-1]
+
+    def __repr__(self):
+        return "Rectangle({}, {})".format(self.width, self.height)
