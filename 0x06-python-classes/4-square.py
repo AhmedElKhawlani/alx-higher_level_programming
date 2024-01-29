@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# 3-square.py by EL KHAWLANI Ahmed
+# 4-square.py by EL KHAWLANI Ahmed
 """Define a class that represents squares"""
 
 
@@ -20,7 +20,7 @@ class Square:
             raise ValueError('size must be >= 0')
 
         self.__size = size
-        
+
     def area(self):
         """
         Calculate area of the square
@@ -28,3 +28,15 @@ class Square:
         """
 
         return (self.__size ** 2)
+
+    @property
+    def size(self):
+        return self.__size
+
+    @size.setter
+    def size(self, value):
+        if not isinstance(value, int):
+            raise TypeError('size must be an integer')
+        if value < 0:
+            raise ValueError('size must be >= 0')
+        self.__size = value
