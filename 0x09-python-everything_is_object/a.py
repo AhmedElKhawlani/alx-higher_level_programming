@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-for i in range(5, 29):
-    f = open(str(i) + "-answer.txt", 'w')
+for i in range(1, 6):
+    f = open("104-line" + str(i) + ".txt", 'w')
