@@ -1,0 +1,34 @@
+Importing the class
+>>> BG = __import__("7-base_geometry").BaseGeometry
+
+Testing area Function
+>>> geo = BG()
+>>> geo.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+Testing integer_validator Function
+>>> geo = BG()
+>>> geo.integer_validator("Dad", 7)
+
+Testing integer_validator Function
+>>> geo = BG()
+>>> geo.integer_validator("Dad", 0)
+Traceback (most recent call last):
+..
+ValueError: Dad must be greater than 0
+
+Testing integer_validator Function
+>>> geo = BG()
+>>> geo.integer_validator("Dad", -5)
+Traceback (most recent call last):
+..
+ValueError: Dad must be greater than 0
+
+Testing integer_validator Function
+>>> geo = BG()
+>>> geo.integer_validator("Dad", 9.877677)
+Traceback (most recent call last):
+..
+TypeError: Dad must be an integer
