@@ -81,3 +81,17 @@ Testing integer_validator Function
 Traceback (most recent call last):
 ..
 TypeError: Dad must be an integer
+
+Testing integer_validator Function
+>>> geo = BG()
+>>> geo.integer_validator("Dad", False)
+Traceback (most recent call last):
+..
+TypeError: Dad must be an integer
+
+Testing integer_validator Function
+>>> geo = BG()
+>>> geo.integer_validator("Dad", [4])
+Traceback (most recent call last):
+..
+TypeError: Dad must be an integer
