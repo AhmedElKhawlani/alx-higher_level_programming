@@ -4,7 +4,7 @@ Module that defines a function that appends in a text file (UTF8).
 """
 
 
-def write_file(filename="", text=""):
+def append_write(filename="", text=""):
     """
     Function that appends a string to a text file (UTF8) and
     returns the number of characters written.
