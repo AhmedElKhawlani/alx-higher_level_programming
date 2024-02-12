@@ -84,7 +84,7 @@ class Base:
             return []
         data = Base.from_json_string(data)
         return [cls.create(**dict_obj) for dict_obj in data]
-    
+
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """
@@ -119,11 +119,11 @@ class Base:
                     header = ["id", "size", "x", "y"]
                 dicts = csv.DictReader(f, fieldnames=header)
                 dicts = [dict([k, int(v)] for k, v in d.items())
-                              for d in dicts]
+                         for d in dicts]
                 return [cls.create(**d) for d in dicts]
         except IOError:
             return []
-    
+
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
