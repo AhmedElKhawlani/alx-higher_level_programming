@@ -5,6 +5,8 @@ Module that contains the definition of the class Base
 
 
 import json
+import csv
+import turtle
 
 
 class Base:
@@ -67,7 +69,7 @@ class Base:
                 dummy = cls(12, 6)
             dummy.update(**dictionary)
             return dummy
-    
+
     @classmethod
     def load_from_file(cls):
         """
@@ -77,7 +79,85 @@ class Base:
         file = name + ".json"
         try:
             with open(file, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-        except FileNotFoundError:
+                data = f.read()
+        except IOError:
             return []
+        data = Base.from_json_string(data)
         return [cls.create(**dict_obj) for dict_obj in data]
+    
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Writes list_objs to a csv file
+        """
+
+        file = cls.__name__ + ".csv"
+        with open(file, "w", newline="") as f:
+            if not list_objs:
+                f.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    header = ["id", "width", "height", "x", "y"]
+                else:
+                    header = ["id", "size", "x", "y"]
+                writer = csv.DictWriter(f, fieldnames=header)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Loads objects from a csv file
+        """
+
+        file = cls.__name__ + ".csv"
+        try:
+            with open(file, "r", newline="") as f:
+                if cls.__name__ == "Rectangle":
+                    header = ["id", "width", "height", "x", "y"]
+                else:
+                    header = ["id", "size", "x", "y"]
+                dicts = csv.DictReader(f, fieldnames=header)
+                dicts = [dict([k, int(v)] for k, v in d.items())
+                              for d in dicts]
+                return [cls.create(**d) for d in dicts]
+        except IOError:
+            return []
+    
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        Draw Rectangles and Squares using the turtle module
+        """
+        turt = turtle.Turtle()
+        turt.screen.bgcolor("#b7312c")
+        turt.pensize(3)
+        turt.shape("turtle")
+
+        turt.color("#ffffff")
+        for rectangle in list_rectangles:
+            turt.showturtle()
+            turt.up()
+            turt.goto(rectangle.x, rectangle.y)
+            turt.down()
+            for i in range(2):
+                turt.forward(rectangle.width)
+                turt.left(90)
+                turt.forward(rectangle.height)
+                turt.left(90)
+            turt.hideturtle()
+
+        turt.color("#b5e3d8")
+        for square in list_squares:
+            turt.showturtle()
+            turt.up()
+            turt.goto(square.x, square.y)
+            turt.down()
+            for i in range(2):
+                turt.forward(square.width)
+                turt.left(90)
+                turt.forward(square.height)
+                turt.left(90)
+            turt.hideturtle()
+
+        turtle.exitonclick()
