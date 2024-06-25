@@ -8,9 +8,9 @@ import MySQLdb
 import sys
 
 if __name__ == '__main__':
-    arg = sys.argv
-    DB = MySQLdb.connect(host='localhost', user=arg[1], passwd=arg[2],
-                     db=arg[3], port=3306)
+    a = sys.argv
+    hs = 'localhost'
+    DB = MySQLdb.connect(host=hs, user=a[1], passwd=a[2], db=a[3], port=3306)
     C = DB.cursor()
     C.execute("SELECT * FROM states ORDER BY id")
     records = C.fetchall()
