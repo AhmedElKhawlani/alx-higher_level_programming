@@ -16,3 +16,5 @@ if __name__ == '__main__':
     records = C.fetchall()
     for record in records:
         print(record)
+    C.close()
+    DB.close()
