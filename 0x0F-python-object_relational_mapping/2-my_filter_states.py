@@ -13,7 +13,7 @@ if __name__ == '__main__':
     DB = sql.connect(host='localhost', user=arg[1], passwd=arg[2],
                      db=arg[3], port=3306)
     C = DB.cursor()
-    C.execute("SELECT * FROM states ORDER BY id WHERE name = '" + arg[4] +"'")
+    C.execute("SELECT * FROM states ORDER BY id WHERE name = '" + arg[4] + "'")
     records = C.fetchall()
     for record in records:
         print(record)
