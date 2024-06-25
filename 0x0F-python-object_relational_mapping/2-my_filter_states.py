@@ -6,10 +6,10 @@ from the database hbtn_0e_0_usa.
 """
 
 import MySQLdb
-import os
+import sys
 
 if __name__ == '__main__':
-    arg = os.argv
+    arg = sys.argv
     DB = MySQLdb.connect(host='localhost', user=arg[1], passwd=arg[2],
                      db=arg[3], port=3306)
     C = DB.cursor()
