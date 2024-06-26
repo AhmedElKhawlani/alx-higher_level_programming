@@ -3,6 +3,7 @@
 """
 This script lists all states with a name matching the argument,
 from the database hbtn_0e_0_usa.
+Safe from SQL Injection.
 """
 
 import MySQLdb
@@ -13,8 +14,8 @@ if __name__ == '__main__':
     hs = 'localhost'
     DB = MySQLdb.connect(host=hs, user=a[1], passwd=a[2], db=a[3], port=3306)
     C = DB.cursor()
-    q = "SELECT * FROM states WHERE BINARY name='{}' ORDER BY id".format(a[4])
-    C.execute(q)
+    q = "SELECT * FROM states WHERE BINARY name = %s ORDER BY id"
+    C.execute(q, (a[4],))
     records = C.fetchall()
     for record in records:
         print(record)
