@@ -7,17 +7,16 @@ Safe from SQL Injection.
 """
 
 import MySQLdb
-import sys
+from sys import argv
 
-if __name__ == '__main__':
-    a = sys.argv
-    hs = 'localhost'
-    DB = MySQLdb.connect(host=hs, user=a[1], passwd=a[2], db=a[3], port=3306)
-    C = DB.cursor()
-    s = a[4]
-    C.execute("SELECT * FROM states WHERE BINARY name = %s ORDER BY id", (s,))
-    records = C.fetchall()
-    for record in records:
-        print(record)
-    C.close()
-    DB.close()
+if __name__ == "__main__":
+    conn = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                           passwd=argv[2], db=argv[3], charset="utf8")
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY states.id",
+                (argv[4], ))
+    query_rows = cur.fetchall()
+    for row in query_rows:
+        print(row)
+    cur.close()
+    conn.close()
