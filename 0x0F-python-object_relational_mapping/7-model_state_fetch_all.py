@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Python Module to list all the states
+Python Module to list all the states.
 """
 from sys import argv
 from model_state import Base, State
