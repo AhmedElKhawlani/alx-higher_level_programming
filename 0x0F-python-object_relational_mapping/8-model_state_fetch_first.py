@@ -18,7 +18,7 @@ if __name__ == "__main__":
     session = Session()
     query = session.query(State).order_by(State.id)
     if query.count() == 0:
-        print()
+        print("Nothing")
     else:
         state = query.first()
         print(str(state.id) + ":", state.name)
