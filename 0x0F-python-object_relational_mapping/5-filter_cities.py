@@ -19,11 +19,12 @@ if __name__ == '__main__':
     C.execute(query1 + query2 + query3 + query4, (a[4],))
     records = C.fetchall()
     cities = [records[i][0] for i in range(len(records))]
+    if cities == []:
+        print()
     for i in range(len(cities)):
         if i == len(cities) - 1:
             print(cities[i])
         else:
             print(cities[i], end=', ')
-    print()
     C.close()
     DB.close()
