@@ -24,5 +24,6 @@ if __name__ == '__main__':
             print(cities[i])
         else:
             print(cities[i], end=', ')
+    print()
     C.close()
     DB.close()
