@@ -13,9 +13,10 @@ request(API, (error, response, body) => {
     for (let i = 0; i < movies.length; i++) {
       const movie = movies[i];
       const actors = movie.characters;
-      if (actors.include(people)) {
+      if (actors.includes(people)) {
         count = count + 1;
       }
     }
+    console.log(count);
   }
 });
